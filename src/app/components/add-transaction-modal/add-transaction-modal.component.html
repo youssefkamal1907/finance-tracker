@@ -1,0 +1,38 @@
+<div class="modal-overlay" [class.open]="isOpen()" (click)="onOverlayClick($event)">
+  <div class="modal">
+    <div class="modal-title">Add Transaction</div>
+
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <input class="form-input" [(ngModel)]="name" placeholder="e.g. Coffee, Salary..." type="text">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Amount ($)</label>
+      <input class="form-input" [(ngModel)]="amount" placeholder="0.00" type="number" step="0.01">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Type</label>
+      <select class="form-select" [(ngModel)]="type">
+        <option value="expense">Expense</option>
+        <option value="income">Income</option>
+        <option value="subscription">Subscription</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Category</label>
+      <select class="form-select" [(ngModel)]="category">
+        @for (cat of categories; track cat) {
+          <option [value]="cat">{{ cat }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="modal-btns">
+      <button class="modal-cancel" (click)="close.emit()">Cancel</button>
+      <button class="modal-submit" (click)="submit()">Add</button>
+    </div>
+  </div>
+</div>

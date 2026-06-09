@@ -1,0 +1,17 @@
+<div class="app">
+  <app-navbar (openModal)="modalOpen.set(true)" />
+
+  <div class="main">
+    <div class="left-panel">
+      <app-summary-cards />
+      <app-donut-chart />
+      <app-expense-list />
+    </div>
+    <app-right-panel />
+  </div>
+
+  <app-add-transaction-modal
+    [isOpen]="modalOpen()"
+    (close)="modalOpen.set(false)"
+  />
+</div>
